@@ -4,22 +4,40 @@ import ShopNow from './ShopNow'
 import Featured from './Featured'
 import AboutUs from './AboutUs'
 import ContactUs from './ContactUs'
+import Footer from './Footer'
+import HeroSection from './HeroSection'
+import BuyNow from './BuyNow'
 
 export default function Home() {
   return (
     <>
       
-        <div className=''>
+        <div className="" style={{width:""}}>
+          {/* <div className=''>
           <NavBar/>  
-        </div>
-         <div>
-          {/* <ShopNow /> */}
-        </div>
-        <div>
-          <AboutUs />
+        </div> */}
+         <div className=''>
+          <ShopNow />
         </div>
         <div>
-          <ContactUs />
+          <Featured />
+        </div>
+           <div>
+          <HeroSection />
+        </div> 
+        <div>
+          <BuyNow name="Weight Machines" />
+        </div>
+        <div>
+          <BuyNow name="Weights" />
+        </div>
+        <div>
+          <BuyNow name="Cardio"/>
+        </div>
+        <div className='bg-dark'>
+          <Footer />
+        </div>
+            
         </div>
         
        

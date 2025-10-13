@@ -1,24 +1,96 @@
-import React from 'react'
-import pageCover from './assets/pageCover.png'
-import fitLogo from './assets/FitLogo.jpg'
+import React from "react";
+import fitLogo from "./assets/FitLogo.jpg";
+import hangingAthlete from "./assets/hangingAthlete.png";
 
 function ShopNow() {
   return (
-    <>
-    <div className='d-md-flex' style={{height:""}}>
-      <div className="bg-black col-12 col-md-6  d-flex flex-column justify-content-center ps-2 ps-lg-5 pt-5 " style={{ backgroundColor:"black",}}>
-        <h1 className='ps-5' style={{color:"white", fontSize:"3.5rem"}}>Why Fat, When <br /> there's Fit</h1>
-                    <h5 className="pt-2 ps-5 " style={{color:"white", fontFamily:"Times New Roman"}}>Shop Now so you can move from Fat to Fit</h5>
-                    <a className="pt-3 ms-5 mb-5" href=""  style={{width:"78px",textDecoration:"none", borderBottom: "2px solid yellow", color:"yellow", fontWeight:"bolder" }}>Shop Now</a>
-                    
+    <div
+      className="d-flex flex-column flex-md-row w-100"
+      style={{
+        minHeight: "80vh",
+        overflow: "hidden",
+      }}
+    >
+      {/* LEFT SECTION */}
+      <div
+        className="d-flex flex-column justify-content-center align-items-start p-4 p-md-5"
+        style={{
+          backgroundColor: "black",
+          color: "white",
+          flex: 1, // ✅ allows proper resizing
+          minHeight: "40vh", // ✅ visible even on small screens
+        }}
+      >
+        <h1
+          className="fw-bold"
+          style={{
+            fontSize: "3rem",
+            lineHeight: "1.2",
+          }}
+        >
+          Why Fat, When <br /> there's Fit
+        </h1>
+
+        <h5
+          className="pt-3"
+          style={{
+            fontFamily: "Times New Roman",
+          }}
+        >
+          Shop Now so you can move from Fat to Fit
+        </h5>
+
+        <a
+          href="#"
+          style={{
+            marginTop: "1rem",
+            textDecoration: "none",
+            borderBottom: "2px solid yellow",
+            color: "yellow",
+            fontWeight: "bolder",
+          }}
+        >
+          Shop Now
+        </a>
+      </div>
+
+      {/* RIGHT SECTION */}
+      <div
+        className="d-flex justify-content-center align-items-center position-relative"
+        style={{
+          backgroundColor: "black",
+          flex: 1,
+          minHeight: "40vh", // ✅ keeps it visible on small screens
+        }}
+      >
+        <img
+          src={hangingAthlete}
+          alt="Athlete"
+          style={{
+            height: "100%",
+            width: "60%",
+            objectFit: "contain",
+            zIndex: 1,
+          }}
+        />
+
+        <img
+          src={fitLogo}
+          alt="Fit Logo"
+          style={{
+            position: "absolute",
+            height: "20%",
+            width: "20%",
+            top: "10%",
+            right: "10%",
+            borderRadius: "8px",
+            objectFit: "cover",
+          }}
+        />
+      </div>
     </div>
-    <div className='col-md-6 bg-black h-md-70 d-flex justify-content-evenly flex-row align-items-center p-relative  h-md-100 pt-5 pb-5' style={{backgroundColor:"tomato"}}> 
-        <img className="" style={{height:"60%", width:"35%"}} src={pageCover} alt="" />
-        <img src={fitLogo} className='p-absolute ' alt="" style={{height:"30%", width:"20%", top:"50%"}}/>
-    </div>
-    </div>
-    </>
-  )
+  );
 }
 
 export default ShopNow;
+

@@ -1,13 +1,21 @@
-import React from 'react'
+import { useState }  from 'react'
+
 import NavBar from './NavBar'
 function ContactUs() {
+
+    const [msg, setMsg] = useState(null)
+   const handleChange = () => {
+      setMsg("Your message has been sent...")
+    }
   return (
+
+   
     <>
         <div>
             {/* <NavBar /> */}
         </div>
-        <div className='mt-4 d-md-flex'>
-            <div className='col-12 ms-5 col-md-5'>
+        <div className='mt-4 d-md-flex ms-5'>
+            <div className='col-12 ms-md-5 col-md-5 pb-5'>
                 <h1 className='mb-5'>Contact Us</h1>
 
                 Name <br />
@@ -21,9 +29,10 @@ function ContactUs() {
                 <textarea className="w-50" rows={5} placeholder='Enter your message' id=""></textarea>
 
                 <br />
-                <button className='btn btn-outline-success rounded-1'>Submit</button>
+                <button onClick={handleChange}className='btn btn-outline-success rounded-1'>Submit</button>
+                <p>{msg}</p>
             </div>
-            <div className='col-12 col-md-5 ms-5 mt-5 mt-md-0'>
+            <div className='col-12 col-md-5 ms-md-5 mt-5 mt-md-0'>
                     <h1 className='mb-5'>Get in Touch</h1>
                     <h4>The Office</h4>
                     

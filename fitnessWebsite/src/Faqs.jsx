@@ -13,7 +13,7 @@ function Faqs() {
   return (
     <>
     <div className='' style={{
-        marginLeft:"100px"
+        marginLeft:"50px"
     }} >
             <div className=' '>
                 <h1 className='mb-5'>FAQs</h1>
@@ -50,7 +50,7 @@ function Faqs() {
                 at <StyledA>fitxafitlife.gmail.com</StyledA> or you can call us at <span className='underline'>03306416413  (10:00 am to 06:00 pm – Mon to Sat)</span>    
                 </p>
             </div>
-
+            
             <div className=' mt-5'>
                 <h2>Shipping Policy</h2>
                 <p>Before we ship your order, we process your order, and verify your information. If we cannotprocess your  order, <br />

@@ -1,17 +1,16 @@
-import React from 'react'
-import NavBar from './NavBar'
+
 import Faqs from './Faqs'
 function AboutUs() {
   return (
     <>
         <div>
-            {/* <NavBar /> */}
+            
         </div>
         <div>
             <div className='d-flex align-items-center justify-content-center' >
                 <h1 style={{fontSize:"4rem", marginTop:"50px"}} >About Us</h1>
             </div>
-            <div className="mb-5 "style={{marginLeft:"100px", marginRight:"50px", marginTop:"20px"}}>
+            <div className="mb-5 d-flex flex-column  justify-content-center "style={{marginLeft:"50px", marginRight:"0px", marginTop:"20px"}}>
                 <h3>WHO ARE WE?</h3>
                 <p>FitX is a fitness based Shopping Store, one of the leading fitness related store in your area; Strength Equipment
                     Clothing, Gym Supplements are sold here all of premium quality, what else would an Athlete want?

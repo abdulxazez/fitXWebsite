@@ -1,67 +1,138 @@
 import React from 'react';
 import styled from 'styled-components';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import FitLogo from './assets/FitLogo.jpg'
-import cart from './assets/cart.png'
+import FitLogo from './assets/FitLogo.jpg';
+
 
 const StyledA = styled.a`
   text-decoration: none;
   margin: 0.5rem;
   color: white;
+  font-size: 1.1rem;
+  display: inline-block;
 
-  &:hover{
-    color: yellow
+  &:hover {
+    color: yellow;
   }
 `;
+
 function NavBar() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark col-12" style={{height:"15vh"}}>
+    <nav
+      className="navbar navbar-expand-lg navbar-dark bg-dark w-100"
+      style={{
+        minHeight: "14vh",
+        padding: "0.8rem 1.5rem",
+      }}
+    >
       <div className="container-fluid">
-        <img className="nav-img " src={FitLogo} alt="" style={{height:"3rem"}}/>
-        <a className="navbar-brand ms-2" href="#" style={{color: "white", fontSize:"1.5rem"}}>
-          Fit <strong>X:</strong> A Fit Life
-        </a>
-        
-        <button 
-          className="navbar-toggler" 
-          type="button" 
-          data-bs-toggle="collapse" 
+        {/* LOGO + BRAND */}
+        <div className="d-flex align-items-center">
+          <img
+            src={FitLogo}
+            alt="FitX Logo"
+            style={{ height: "3rem", width: "auto" }}
+          />
+          <a
+            className="navbar-brand ms-2"
+            href="#"
+            style={{
+              color: "white",
+              fontSize: "1.4rem",
+              whiteSpace: "nowrap",
+            }}
+          >
+            Fit <strong>X:</strong> A Fit Life
+          </a>
+        </div>
+
+        {/* TOGGLER FOR SMALL SCREENS */}
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        
-        <div className="collapse navbar-collapse    " id="navbarNav">
-          <ul className="navbar-nav me-auto">
-            <li className="nav-item ms-5">
-              <StyledA  href="#">Home</StyledA>
+
+        {/* COLLAPSIBLE SECTION */}
+        <div
+          className="collapse navbar-collapse justify-content-between align-items-center mt-3 mt-lg-0"
+          id="navbarNav"
+        >
+          {/* LEFT LINKS */}
+          <ul className="navbar-nav mx-auto text-center">
+            <li className="nav-item">
+              <StyledA href="#">Home</StyledA>
             </li>
             <li className="nav-item">
-              <StyledA href="#">Accessories</StyledA>
+              <StyledA href="#">Shop Now</StyledA>
             </li>
             <li className="nav-item">
-              <StyledA href="#">Clothing</StyledA>
+              <StyledA href="#">About Us</StyledA>
             </li>
             <li className="nav-item">
               <StyledA href="#">Supplements</StyledA>
             </li>
             <li className="nav-item">
-              <StyledA href="#">DietAI</StyledA>
+              <StyledA href="#">Clothing</StyledA>
             </li>
           </ul>
-          
-          <form className="d-flex " style={{position: "relative"}}>
-            <input 
-              className="form-control rounded-0" 
-              type="search" 
-              placeholder="Search" 
-              aria-label="Search" 
-            />
-            <a className="me-3 rouded-0 "  type="submit" style={{border:"1px solid black", width:"25%",  backgroundColor:"rgb(255, 102, 0)"}}>
-              <i class="bi bi-search ms-2" style={{fontSize:"1.8rem", }} ></i>
-            </a>
-            <StyledA href="#" ><i class="bi bi-bag me-3" style={{fontSize:"1.8rem"}}></i></StyledA>
-            <StyledA href=""><i class="bi bi-heart me-5" style={{fontSize:"1.8rem"}}></i></StyledA>
+
+          {/* RIGHT SIDE: SEARCH + ICONS */}
+          <form
+            className="d-flex flex-wrap justify-content-center align-items-center mt-3 mt-lg-0"
+            style={{ gap: "0.5rem" }}
+          >
+            <div className="d-flex" style={{ flexWrap: "nowrap" }}>
+              <input
+                className="form-control"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+                style={{
+                  borderTopLeftRadius: "20px",
+                  borderBottomLeftRadius: "20px",
+                  width: "160px",
+                  minWidth: "100px",
+                }}
+              />
+              <button
+                type="submit"
+                className="btn"
+                style={{
+                  border: "1px solid black",
+                  backgroundColor: "rgb(255, 102, 0)",
+                  borderTopRightRadius: "20px",
+                  borderBottomRightRadius: "20px",
+                  padding: "0 10px",
+                }}
+              >
+                <i
+                  className="bi bi-search text-white"
+                  style={{ fontSize: "1.1rem" }}
+                ></i>
+              </button>
+            </div>
+
+            {/* ICONS */}
+            <div className="d-flex justify-content-center mt-2 mt-lg-0">
+              <StyledA href="#">
+                <i className="bi bi-person ms-2" style={{ fontSize: "1.8rem" }}></i>
+              </StyledA>
+              <StyledA href="#">
+                <i className="bi bi-bag ms-2" style={{ fontSize: "1.7rem" }}></i>
+              </StyledA>
+              <StyledA href="#">
+                <i className="bi bi-heart ms-2 me-2" style={{ fontSize: "1.7rem" }}></i>
+              </StyledA>
+            </div>
           </form>
         </div>
       </div>
