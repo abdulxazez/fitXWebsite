@@ -1,7 +1,7 @@
 import React from "react";
 
 function Cart() {
-  // 🧾 Cart Items Array
+
   const cartItems = [
     {
       id: 1,

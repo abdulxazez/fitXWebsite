@@ -34,9 +34,9 @@ export default function Home() {
         <div>
           <BuyNow name="Cardio"/>
         </div>
-        <div className='bg-dark'>
+        {/* <div className='bg-dark'>
           <Footer />
-        </div>
+        </div> */}
             
         </div>
         

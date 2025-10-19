@@ -1,72 +1,104 @@
-import React from 'react'
-import styled from 'styled-components'
-
+import React from 'react';
+import styled from 'styled-components';
+import styles from './footer.module.css'
+import { Link } from 'react-router-dom';
 const StyledA = styled.p`
-color: white;
+  color: white;
+  margin: 0.3rem 0;
+  cursor: pointer;
 
-&:hover{
-  color:yellow;
-}
-`
+  &:hover {
+    color: yellow;
+  }
+`;
+
 function Footer() {
   return (
-    <> 
-   <div className="row bg-dark col-12 pt-2" style={{ backgroundColor:"rgb(33, 37, 41)"}}>
-    
-      <div className=" col-md-6 col-lg-3 ps-5 pt-3 text-white bg-dark d-flex flex-column align-items-center" style={{}}>
-        <h3>Contact Us</h3>
-        <h6>Address:</h6>
-        <p>Share Sabala, Riyadh, Saudi Arabia</p>
-        <h6>Hotline: </h6>
-        <a href="" className="" style={{color: "orange", textDecoration:"none"}}>0337-7577330</a>
-        <br /><br />
-        <h6>Email: </h6>
-        <a href="" style={{color: "orange", textDecoration:"none"}}>fitXafitlife@gmail.com</a>
-        
-      </div>
-    
-      <div className="col col-12 col-md-6 col-lg-3 bg-dark ps-5 pt-3 d-flex flex-column align-items-center">
-      <h3 style={{color:"white"}}>About Us</h3>
-      <StyledA>Warranty Policy</StyledA>
-      <StyledA>FAQs</StyledA>
-      <StyledA>Supplements</StyledA>
-      <StyledA>Clothing</StyledA>
-      <StyledA>Shipping Policy</StyledA>
-      <StyledA>Privacy Policy</StyledA>
+    <>
+      <div
+        className="container-fluid bg-dark text-white pt-3 pb-2 "
+        style={{
+          overflowX: "hidden", // prevent horizontal scroll
+        }}
+      >
+        <div className="row text-center text-md-start g-3 px-3 justify-content-center">
+          {/* Contact Us */}
+          <div className="col-12 col-md-6 col-lg-3 d-flex flex-column align-items-center">
+            <h3>Contact Us</h3>
+            <h6>Address:</h6>
+            <p className="mb-1">Share Sabala, Riyadh, Saudi Arabia</p>
+            <h6>Hotline:</h6>
+            <a
+              href="#"
+              style={{ color: "orange", textDecoration: "none" }}
+            >
+              0337-7577330
+            </a>
+            <br />
+            <br />
+            <h6>Email:</h6>
+            <a
+              href="#"
+              style={{ color: "orange", textDecoration: "none" }}
+            >
+              fitXafitlife@gmail.com
+            </a>
+          </div>
 
-      </div>
-      <div className="col-12 col-md-6 col-lg-3 bg-dark ps-5 pt-3 d-flex flex-column align-items-center">
-          <h3 style={{color:"white", paddingBottom:"10px"}}>More Information</h3>
-          <StyledA>Account</StyledA>
-          <StyledA>Wishlist</StyledA>
-          <StyledA>Shopping Cart</StyledA>
-          <StyledA>Checkout</StyledA>
-      </div>
-      <div className="col-12 col-md-6 col-lg-3 bg-dark ps-5 pt-3 d-flex flex-column align-items-center text-white">
-        <h3 style={{color:'white'}}>Follow Us</h3>
-        <div><i class="bi bi-facebook pe-2 ps-4" style={{color:"white", fontSize:"1.5rem"}}></i> 
-        <i class="bi bi-instagram ps-1 pe-2" style={{color:"white", fontSize:"1.5rem"}}></i>
-        <i class="bi bi-youtube ps-1" style={{color:"white", fontSize:"1.5rem"}}></i></div> 
-        <div style={{paddingLeft:"100px", paddingTop:"80px", fontSize:"1.5rem"}}>
-          <h3>Payments</h3>
-          <i class="bi bi-credit-card ps-5 ps-md-3"></i>
-          <i class="bi bi-paypal ps-2"></i>
-          <i class="bi bi-stripe ps-2"></i>
+          {/* About Us */}
+          <div className="col-12 col-md-6 col-lg-3 d-flex flex-column align-items-center ">
+            <h3>About Us</h3>
+            <Link className={styles.link1} to="/contactUs">Send a Message</Link>
+            <Link className={styles.link1} to="/aboutUs">FAQs</Link>
+            <Link className={styles.link1} to="/aboutUs">Shipping Policy</Link>
+            <Link className={styles.link1} to="/aboutUs">Privacy Policy</Link>
+            <Link className={styles.link1} to="/">Supplements</Link>
+            <Link className={styles.link1} to="/">Clothing</Link>
+          </div>
+
+          {/* More Information */}
+          <div className="col-12 col-md-6 col-lg-3 d-flex flex-column align-items-center ">
+            <h3>More Information</h3>
+            <Link className={styles.link1} to="/">Account</Link>
+            <Link className={styles.link1} to="/">Wishlist</Link>
+            <Link className={styles.link1} to="/cart">Shopping Cart</Link>
+            <Link className={styles.link1} to="/cart">Checkout</Link>
+          </div>
+
+          {/* Follow Us */}
+          <div className="col-12 col-md-6 col-lg-3 d-flex flex-column align-items-center ">
+            <h3>Follow Us</h3>
+            <div>
+              <i
+                className="bi bi-facebook pe-2"
+                style={{ color: "white", fontSize: "1.5rem" }}
+              ></i>
+              <i
+                className="bi bi-instagram pe-2"
+                style={{ color: "white", fontSize: "1.5rem" }}
+              ></i>
+              <i
+                className="bi bi-youtube"
+                style={{ color: "white", fontSize: "1.5rem" }}
+              ></i>
+            </div>
+            <div className="pt-4 ps-5 ms-5">
+              <h4>Payments</h4>
+              <i className="bi bi-credit-card pe-2"></i>
+              <i className="bi bi-paypal pe-2"></i>
+              <i className="bi bi-stripe"></i>
+            </div>
+          </div>
         </div>
-        
-        
-</div>
-</div>
-      <hr style={{ borderColor: "white", border: "1px solid white"}}/>
-      <div className='d-flex  align-items-center justify-content-center'>
-        <h6  style={{color: "white"}}>F i t X : Copyright 2025</h6>
-      </div>
-      
-      
-      </>
-    
 
-  )
+        <hr style={{ borderColor: "white", margin: "1rem 0" }} />
+
+        <div className="text-center pb-2">
+          <h6 style={{ color: "white", margin: 0 }}>FitX: Copyright © 2025</h6>
+        </div>
+      </div>
+    </>
+  );
 }
 
-export default Footer
+export default Footer;

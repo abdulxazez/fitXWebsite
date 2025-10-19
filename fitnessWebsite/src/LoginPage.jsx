@@ -1,69 +1,127 @@
-import { useRef, useState } from 'react'
-import React from 'react'
-import styled from 'styled-components'
-import { motion } from 'framer-motion'
+import { useRef } from "react";
+import React from "react";
+import styled from "styled-components";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 
-    const StyledA1 = styled.a`
-    color: black;
-    &:hover{
-      color: grey;
-    }
-    
-    `
-    const StyledButton = styled.button`
-     background-color: ${(props) => (props.color ? "blue" : "pink")};
-    &:hover{
-      padding-left: 20px;
-      padding-right: 20px;
-      padding-top: 10px;
-      padding-bottom: 10px;
-    }
-    `
-    const StyledA = styled.a`
-    color: black;
-      &:hover{
-      color: black;
-      }
-    `
+const schema = z.object({
+  username: z.string().min(1, { message: "Enter username" }),
+  password: z.string().min(1, { message: "Enter password" }),
+});
+
+const StyledA = styled.a`
+  color: black;
+  font-weight: 500;
+  text-decoration: none;
+  &:hover {
+    color: #444;
+    text-decoration: underline;
+  }
+`;
+
 function LoginPage() {
+  const passwordRef = useRef(null);
+  const usernameRef = useRef(null);
 
-    const passwordRef = useRef(null)
-    const usernameRef = useRef(null)
-    const [submitted, setSubmitted] = useState(false);
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        setSubmitted(true);
-    }
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+    reset,
+  } = useForm({
+    resolver: zodResolver(schema),
+  });
+
+  const onSubmit = (data) => {
+    console.log(data);
+    alert("Login successful!");
+    reset();
+  };
 
   return (
-    <>
-    <div className="container-fluid col-9  d-flex flex-column justify-content-center align-items-center " style={{height:"75vh", backgroundColor: "rgb(255, 255, 237)"}}>
-      {!submitted ?
-      <form onSubmit={handleSubmit}>
-      <h1 className='mb-5 ' style={{fontWeight:"bolder"}}>Log In to <strong>Fit X</strong></h1>
-        <span onMouseEnter={() => usernameRef.current.focus()}style={{paddingRight:"20px", paddingBottom:"", fontSize:'18.4px', color:"black"}}>Username</span>
-        <input ref= {usernameRef} type="text" className='rounded-3' placeholder="Enter Username" style={{border:"grey", marginBottom:"20px", }}/>
-        <br />
-        <span onMouseEnter={() => passwordRef.current.focus()}style={{paddingRight:"20px",  fontSize:'20px', color:"black"}}>Password</span>
-        <input ref={passwordRef}type="password" className='rounded-3 mb-1' placeholder="Enter Password" style={{border:"grey"}}/>
-        <br />
-        
-        <StyledA className='mt-5 pe-4 pt-2' href="" style={{ textDecoration:"none", marginLeft:"160px", paddingTop:"50px"}}>Forgot Password?</StyledA>
-        <br />
-        <button className='btn btn-outline-dark mt-3 me-0' style={{width:"290px", marginBottom:"25px"}}>Login</button>
-        
-      <br />
+    <div className="d-flex justify-content-center align-items-center vh-100 bg-light">
+      <motion.div
+        initial={{ opacity: 0, y: -200 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="card shadow-lg border-0 p-4 col-10 col-md-6 col-lg-4"
+        style={{ backgroundColor: "#FFF176" }}
+      >
+        <h2 className="text-center fw-bold mb-4">
+          Log In to <span className="text-dark">Fit X</span>
+        </h2>
 
-        <StyledA1 href="" className='pt-5' style={{textDecoration:"none", textAlign:"center"}}> <h3 style={{fontWeight:"bolder"}}>Register Now!</h3></StyledA1>
-      </form>
-        :  <div>
-          <h1>Logging in <div class="spinner-border" role="status"></div></h1>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          {/* Username */}
+          <div className="mb-3">
+            <label htmlFor="username" className="form-label fw-semibold">
+              Username
+            </label>
+            <input
+              id="username"
+              ref={usernameRef}
+              className={`form-control ${errors.username ? "is-invalid" : ""}`}
+              placeholder="Enter Username"
+              {...register("username")}
+            />
+            {errors.username && (
+              <div className="invalid-feedback text-center">
+                {errors.username.message}
+              </div>
+            )}
           </div>
-        
-        }
+
+          {/* Password */}
+          <div className="mb-2">
+            <label htmlFor="password" className="form-label fw-semibold">
+              Password
+            </label>
+            <input
+              id="password"
+              ref={passwordRef}
+              type="password"
+              className={`form-control ${errors.password ? "is-invalid" : ""}`}
+              placeholder="Enter Password"
+              {...register("password")}
+            />
+            {errors.password && (
+              <div className="invalid-feedback text-center">
+                {errors.password.message}
+              </div>
+            )}
+          </div>
+
+          {/* Forgot Password */}
+          <div className="text-end mt-2 mb-3">
+            <StyledA href="#">Forgot Password?</StyledA>
+          </div>
+
+          {/* Login Button */}
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.97 }}
+            type="submit"
+            className="btn btn-dark w-100 fw-bold py-2 shadow-sm"
+          >
+            Login
+          </motion.button>
+
+          {/* Register Link */}
+          <div className="text-center mt-4">
+            <Link
+              to="/loginPage/registeration"
+              className="text-decoration-none text-dark"
+            >
+              <h5 className="fw-bold">Register Now!</h5>
+            </Link>
+          </div>
+        </form>
+      </motion.div>
     </div>
-    </>
-  )
+  );
 }
 
-export default LoginPage
+export default LoginPage;

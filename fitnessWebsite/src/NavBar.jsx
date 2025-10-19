@@ -4,12 +4,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import FitLogo from './assets/FitLogo.jpg';
-
+import { Link, useLocation } from 'react-router-dom';
+import styles from './navbar.module.css';
 
 const StyledA = styled.a`
   text-decoration: none;
   margin: 0.5rem;
-  color: white;
+  color: white; 
   font-size: 1.1rem;
   display: inline-block;
 
@@ -19,6 +20,8 @@ const StyledA = styled.a`
 `;
 
 function NavBar() {
+  const location = useLocation();
+
   return (
     <nav
       className="navbar navbar-expand-lg navbar-dark bg-dark w-100"
@@ -28,24 +31,38 @@ function NavBar() {
       }}
     >
       <div className="container-fluid">
-        {/* LOGO + BRAND */}
-        <div className="d-flex align-items-center">
-          <img
-            src={FitLogo}
-            alt="FitX Logo"
-            style={{ height: "3rem", width: "auto" }}
-          />
-          <a
-            className="navbar-brand ms-2"
-            href="#"
+        {/* LOGO + BRAND + PATHNAME */}
+        <div className="d-flex flex-column align-items-start">
+          <div className="d-flex align-items-center">
+            <img
+              src={FitLogo}
+              alt="FitX Logo"
+              style={{ height: "3rem", width: "auto" }}
+            />
+            <a
+              className="navbar-brand ms-2"
+              href="#"
+              style={{
+                color: "white",
+                fontSize: "1.4rem",
+                whiteSpace: "nowrap",
+              }}
+            >
+              Fit <strong>X:</strong> A Fit Life
+            </a>
+          </div>
+
+          {/* Display current path */}
+          <h6
             style={{
-              color: "white",
-              fontSize: "1.4rem",
-              whiteSpace: "nowrap",
+              color: "#ccc",
+              marginTop: "0.3rem",
+              fontSize: "0.9rem",
+              marginLeft: "0rem", // aligns under logo text
             }}
           >
-            Fit <strong>X:</strong> A Fit Life
-          </a>
+             Home{location.pathname}
+          </h6>
         </div>
 
         {/* TOGGLER FOR SMALL SCREENS */}
@@ -69,19 +86,19 @@ function NavBar() {
           {/* LEFT LINKS */}
           <ul className="navbar-nav mx-auto text-center">
             <li className="nav-item">
-              <StyledA href="#">Home</StyledA>
+              <Link className={styles.link1} to="/">Home</Link>
             </li>
             <li className="nav-item">
-              <StyledA href="#">Shop Now</StyledA>
+              <Link className={styles.link1} to="/shopNow">Shop Now</Link>
             </li>
             <li className="nav-item">
-              <StyledA href="#">About Us</StyledA>
+              <Link className={styles.link1} to="/aboutUs">About Us</Link>
             </li>
             <li className="nav-item">
-              <StyledA href="#">Supplements</StyledA>
+              <Link className={styles.link1} to="/contactUs">Contact Us</Link>
             </li>
             <li className="nav-item">
-              <StyledA href="#">Clothing</StyledA>
+              <Link className={styles.link1} to="/clothing">Clothing</Link>
             </li>
           </ul>
 
@@ -124,13 +141,13 @@ function NavBar() {
             {/* ICONS */}
             <div className="d-flex justify-content-center mt-2 mt-lg-0">
               <StyledA href="#">
-                <i className="bi bi-person ms-2" style={{ fontSize: "1.8rem" }}></i>
+                <Link to="/loginPage"><i className="bi bi-person ms-2" style={{ fontSize: "1.8rem", color: "white" }}></i></Link>
               </StyledA>
               <StyledA href="#">
-                <i className="bi bi-bag ms-2" style={{ fontSize: "1.7rem" }}></i>
+                <Link to="/cart"><i className="bi bi-bag ms-2" style={{ fontSize: "1.7rem", color: "white" }}></i></Link>
               </StyledA>
               <StyledA href="#">
-                <i className="bi bi-heart ms-2 me-2" style={{ fontSize: "1.7rem" }}></i>
+                <i className="bi bi-heart ms-2 me-2" style={{ fontSize: "1.7rem", color: "white" }}></i>
               </StyledA>
             </div>
           </form>

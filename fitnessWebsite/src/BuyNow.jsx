@@ -20,7 +20,7 @@ function BuyNow({name}) {
     dots: true,
     infinite: false,
     speed: 500,
-    slidesToShow: 5,
+    slidesToShow: 4,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2500,
@@ -28,7 +28,7 @@ function BuyNow({name}) {
     swipeToSlide: true,
     responsive: [
       {
-        breakpoint: 1600, // xl and below
+        breakpoint: 2500, // xl and below
         settings: { slidesToShow: 4 },
       },
       {
@@ -60,10 +60,10 @@ function BuyNow({name}) {
       >
         <div className="row">
           {/* LEFT CARD */}
-          <div className="col-12 col-md-5 col-lg-3 mb-4 mt-5">
+          <div className="col-12 col-md-5 col-lg-3 mb-4 mt-3">
             <div className="card mx-auto shadow-sm" style={{ borderRadius: "12px", backgroundImage: `url(${backChest})`,
                                                             backgroundColor:"rgba(0,0,0,0.5)",
-                                                            backgroundSize: "cover",
+                                                            backgroundSize: "200px auto",
                                                             backgroundPosition: "center",
                                                             backgroundRepeat: "no-repeat", height:"500px",
                                                             backgroundBlendMode: "darken"
@@ -74,7 +74,7 @@ function BuyNow({name}) {
     color: "white",
     fontWeight: "bold",
     textShadow: "2px 2px 5px rgba(0,0,0,0.8)",
-    marginTop: "420px",
+    marginTop: "380px",
   }}>{name}</h2>
               
             </div>

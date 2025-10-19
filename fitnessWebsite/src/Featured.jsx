@@ -44,7 +44,7 @@ function Featured() {
 
   return (
     <div className="p-4" style={{ maxWidth: "100%", overflow: "hidden" }}>
-      {/* Tabs Section */}
+      
       <div className="d-flex flex-wrap gap-3 mb-4">
         <h5
           className="me-3 fw-bold text-danger pb-1"
@@ -56,7 +56,7 @@ function Featured() {
         <h5>Best Sellers</h5>
       </div>
 
-      {/* Carousel Section */}
+      
       <Slider {...settings}>
         {featuredItems.map((item, index) => (
           <div key={index} style={{ padding: "0 10px" }}>
@@ -104,7 +104,7 @@ function Featured() {
                   </a>
                 ) : (
                   <p className="fw-bold text-success">
-                    Price: {item.price.toLocaleString()} PKR
+                    Price: {item.price} PKR
                   </p>
                   
                 )}
