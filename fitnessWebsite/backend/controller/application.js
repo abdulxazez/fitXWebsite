@@ -1,34 +1,8 @@
 import learnifyApplicationModel from "../models/application.js";
 import productModel from "../models/productModel.js";
-import ContactModel from "../models/contactsModel.js";
 
-export const postUsers = async (req, res) => {
 
-  console.log("posting....")
-  console.log("Received data:", req.body)
 
-  try {
-    const newUser = new learnifyApplicationModel(req.body)
-    const savedUser = await newUser.save()
-    res.json(savedUser)
-  } catch (error) {
-    console.log("not saved")
-  }
-}
-
-export const addingProduct=async(req,res)=>{
-   console.log("posting....")
-  console.log("Received data:", req.body)
-try{
-  const newProduct = new productModel(req.body);
-  const savedProduct = await newProduct.save();
-  res.json(savedProduct);
-}
-catch (error)
-{
-console.log("Product Not Added")
-}
-}
 
 export const seeUsers=async (req,res)=>{
  try{

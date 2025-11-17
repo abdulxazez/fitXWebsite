@@ -2,30 +2,31 @@ import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import mongoose from "mongoose";
-import application from "./routes/application.js"
-import product from "./routes/productRoutes.js";
-import homepage from "./routes/homepageroutes.js";  
-import login from "./routes/loginroutes.js";
-import contact from "./routes/contactroutes.js";
-import { addingProduct } from "./controller/application.js";
+
+import { login } from "./controller/loginCredentials.js";
+import { addUser } from "./controller/user.js";
+import { addProduct } from "./controller/product.js";
+
 const app = express();
-app.use(cors());
+
+// CORS FIRST
 app.use(cors({
   origin: "http://localhost:5173",
-  methods: "GET,POST",
+  methods: "GET, POST",
 }));
-app.use("/login", login);
-app.use(bodyParser.json({extended:true}));
-app.use(express.json())
-app.use(bodyParser.urlencoded({extended:true}))
-app.use('/Products', product);
-app.use('/registration',application)
-app.use('/',application)
-app.use('/',homepage);
+
+// BODY PARSERS BEFORE ROUTES
+app.use(express.json());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// FIXED ROUTES
+//app.use("/loginPage", login);
+
+// Option A: Use your actual controller function (RECOMMENDED)
+app.post("/registeration", addUser);
 
 
-mongoose.connect(url, {useNewUrlParser: true,useUnifiedTopology:true}).then(()=>console.log("Database Connected")).catch(err => console.error(err));
+app.post("/Products", addProduct);
 
-app.listen(5000, () => console.log("Server is running"));
-
-
+app.listen(5000, () => console.log("Server is running on port 5000"));

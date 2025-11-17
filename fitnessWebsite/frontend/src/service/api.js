@@ -2,8 +2,14 @@ import axios from "axios";
 
 const url="http://localhost:5000";
 
-export const addUser=async (userData)=>{
-   return await axios.post(`${url}/registration`, userData);
+export const addUser = async (userData) => {
+  try {
+    const response = await axios.post(`${url}/registration`, userData);
+    return response;
+  } catch (error) {
+    console.error("API call failed:", error);
+    throw error;
+  }
 };
 
 export const addingProduct = async(productData)=>{
@@ -22,7 +28,7 @@ export const postLoginCredentials = async(loginData)=>{
   console.log("Data received")
 
  try{
-   return await axios.post(`${url}/login`,loginData);
+   return await axios.post(`${url}/loginPage`,loginData);
  } catch (error) {
   console.log("")
  }
