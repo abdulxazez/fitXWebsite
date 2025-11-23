@@ -18,4 +18,4 @@ export const addUser = async (req, res) => {
       error: error.message 
     })
   }
-};
+}; 

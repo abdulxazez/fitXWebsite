@@ -1,15 +1,31 @@
-import { Int32 } from "mongodb";
+import { Double, Int32} from "mongodb";
 import mongoose from "mongoose";
 
 const productStructure=mongoose.Schema({
 
-    productName:String,
-    productId:Int32,
-    quantity:String,
-    price:Int32,
-    category:String,
+    productName: {
+        type: String,
+        required: true
+    },
+    productId: {
+        type: Int32,
+        required: true
+    },
+    quantity: {
+        type: Int32,
+        required: true
+    },
+    price: {
+        type: Double,
+        required: true
+    },
+    category: {
+        type: String,
+        required: true
+    }
+ 
     
  });
 
- const productModel = mongoose.model('product',productStructure);
+ const productModel = mongoose.model('Products',productStructure);
  export default productModel;

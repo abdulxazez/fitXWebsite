@@ -12,6 +12,6 @@ export const login = async (req, res) => {
       console.log("Wrong username or password entered");
     }
   } catch (error) {
-    console.error("Later Maybe");
+    console.error(error);
   }
 };
